@@ -1,0 +1,19 @@
+name: Build and Deploy
+
+on: [push] # 触发条件(git 推送时)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️	# 获取源码
+        uses: actions/checkout@v2 # 下面这个最好设成 false
+        with:
+          persist-credentials: false
+      - name: Install 🔧 and Build  🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3 # 构建和部署
+        run: |
+          docker start gitbook-html
+		with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FOLDER: docs # 想部署的文件夹
