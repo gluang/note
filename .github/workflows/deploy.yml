@@ -15,5 +15,5 @@ jobs:
         run: |
           docker start gitbook-html
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           FOLDER: docs # 想部署的文件夹
